@@ -7,6 +7,11 @@ namespace Test_task_1
     public class Math
     {
         /// <summary>
+        /// The automatic reset event handles
+        /// </summary>
+        private static AutoResetEvent[] _autoResetEventHandles;
+
+        /// <summary>
         ///     The array of searching minimum value
         /// </summary>
         private double[] _arrayOfSearchingMinValue;
@@ -17,14 +22,9 @@ namespace Test_task_1
         private IList<Thread> _threadPool;
 
         /// <summary>
-        /// The thread results
+        ///     The thread results
         /// </summary>
         private IList<double> _threadResults;
-
-        /// <summary>
-        /// The handle
-        /// </summary>
-        private static AutoResetEvent[] _autoResetEventHandles;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Math" /> class.
@@ -51,10 +51,10 @@ namespace Test_task_1
         public double MinimumValueSync { get; private set; }
 
         /// <summary>
-        /// Gets the minimum value asynchronous.
+        ///     Gets the minimum value asynchronous.
         /// </summary>
         /// <value>
-        /// The minumum value asynchronous.
+        ///     The minumum value asynchronous.
         /// </value>
         public double MinimumValueAsync
         {
@@ -62,12 +62,8 @@ namespace Test_task_1
             {
                 var minimumValue = 1.0;
                 foreach (var currentThreadResult in _threadResults)
-                {
                     if (currentThreadResult < minimumValue)
-                    {
                         minimumValue = currentThreadResult;
-                    }
-                }
 
                 return minimumValue;
             }
@@ -87,7 +83,7 @@ namespace Test_task_1
         }
 
         /// <summary>
-        /// Finds the minimum value in array asynchronous.
+        ///     Finds the minimum value in array asynchronous.
         /// </summary>
         private void FindMinimumValueInArrayAsync()
         {
@@ -108,7 +104,7 @@ namespace Test_task_1
         }
 
         /// <summary>
-        /// Finds the minimum value in array asynchronous.
+        ///     Finds the minimum value in array asynchronous.
         /// </summary>
         public TimeSpan GetMinimumValueSearchTimeAsync()
         {
@@ -121,7 +117,7 @@ namespace Test_task_1
         }
 
         /// <summary>
-        /// Gets the search time synchronize.
+        ///     Gets the search time synchronize.
         /// </summary>
         /// <returns></returns>
         public TimeSpan GetMinimumValueSearchTimeSync()
@@ -149,25 +145,20 @@ namespace Test_task_1
                 _threadPool.Add(thread);
                 _threadResults.Add(1.0);
             }
-
         }
 
         /// <summary>
-        /// Initializes the event handle.
+        ///     Initializes the event handle.
         /// </summary>
         /// <param name="threadCount">The thread count.</param>
         private void InitializeWaitHandle(int threadCount)
         {
-            //_autoResetEventHandles = new[] { new AutoResetEvent(false), new AutoResetEvent(false), new AutoResetEvent(false), new AutoResetEvent(false) };
             _autoResetEventHandles = new AutoResetEvent[threadCount];
-            for (int i = 0; i < threadCount; i++)
-            {
-                _autoResetEventHandles[i] = new AutoResetEvent(false);
-            }
+            for (var i = 0; i < threadCount; i++) _autoResetEventHandles[i] = new AutoResetEvent(false);
         }
 
         /// <summary>
-        /// Initializes the searching array.
+        ///     Initializes the searching array.
         /// </summary>
         /// <param name="arrayLength">Length of the array.</param>
         private void InitializeSearchingArray(int arrayLength)
@@ -184,7 +175,7 @@ namespace Test_task_1
         }
 
         /// <summary>
-        /// Finds the minimum value with start end array indexes.
+        ///     Finds the minimum value with start end array indexes.
         /// </summary>
         /// <param name="startIndexEndIndexThreadNumber">The start index end index thread number.</param>
         /// <returns></returns>
@@ -192,11 +183,9 @@ namespace Test_task_1
         {
             try
             {
-                var startIndex = ((int[])startIndexEndIndexThreadNumber)[0];
-                var endIndex = ((int[])startIndexEndIndexThreadNumber)[1];
-                var threadNumber = ((int[])startIndexEndIndexThreadNumber)[2];
-
-
+                var startIndex = ((int[]) startIndexEndIndexThreadNumber)[0];
+                var endIndex = ((int[]) startIndexEndIndexThreadNumber)[1];
+                var threadNumber = ((int[]) startIndexEndIndexThreadNumber)[2];
 
                 var foundedMinimumValue = 1.0;
                 for (var i = startIndex; i < endIndex; i++)
@@ -210,7 +199,6 @@ namespace Test_task_1
             {
                 throw ex;
             }
-
         }
     }
 }
