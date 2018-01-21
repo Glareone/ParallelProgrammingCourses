@@ -1,0 +1,7 @@
+D:\Programming\Parallel Programming\Test 1\Test task 1\Test task 1\bin\Debug\Test task 1.exe.config
+D:\Programming\Parallel Programming\Test 1\Test task 1\Test task 1\bin\Debug\Test task 1.exe
+D:\Programming\Parallel Programming\Test 1\Test task 1\Test task 1\bin\Debug\Test task 1.pdb
+D:\Programming\Parallel Programming\Test 1\Test task 1\Test task 1\obj\Debug\Test task 1.csproj.CoreCompileInputs.cache
+D:\Programming\Parallel Programming\Test 1\Test task 1\Test task 1\obj\Debug\Test task 1.exe
+D:\Programming\Parallel Programming\Test 1\Test task 1\Test task 1\obj\Debug\Test task 1.pdb
+D:\Programming\Parallel Programming\Test 1\Test task 1\Test task 1\obj\Debug\Test task 1.csprojResolveAssemblyReference.cache
